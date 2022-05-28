@@ -72,6 +72,18 @@ define U-Boot/orangepi-r1-plus-lts-rk3328
   USE_RKBIN:=1
 endef
 
+# RK3568 boards
+
+define U-Boot/nanopi-r5s-rk3568
+  BUILD_SUBTARGET:=armv8
+  NAME:=QUARTZ64
+  BUILD_DEVICES:= \
+    friendlyarm_nanopi-r5s
+  DEPENDS:=+PACKAGE_u-boot-nanopi-r5s-rk3568:arm-trusted-firmware-rk3568
+  PKG_BUILD_DEPENDS:=arm-trusted-firmware-rockchip-vendor
+  ATF:=rk3568_bl31_v1.24.elf
+  USE_RKBIN:=1
+endef
 
 # RK3399 boards
 
@@ -113,7 +125,8 @@ UBOOT_TARGETS := \
   nanopi-r2c-rk3328 \
   nanopi-r2s-rk3328 \
   orangepi-r1-plus-rk3328 \
-  orangepi-r1-plus-lts-rk3328
+  orangepi-r1-plus-lts-rk3328 \
+  nanopi-r5s-rk3568
 
 UBOOT_CONFIGURE_VARS += USE_PRIVATE_LIBGCC=yes
 
